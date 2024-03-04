@@ -1,0 +1,86 @@
+#include <stdio.h>
+#define MaxSize 100
+struct TreeNode {
+	int value;
+	bool ifEmpty;
+		
+};
+typedef struct BiTNode{
+	int value;
+	struct BiTNode *lchild,*rchild;
+}BiTNode,*BiTree;
+
+BiTree root=NULL;
+root=(BiTree) malloc(sizeof(BiTNode));//因为申请的是指针不是整个结点，所以malloc前面用的不是（BiTree*）
+root->data=1;
+root->lchild=NULL;
+root->rchild=NULL;
+BiTree * p=(BiTNode *) malloc(sizeof(BiTNode));
+p->data=2;
+p->lchild=NULL;
+p->rchild=NULL;
+root->lchild=p;
+void PreOrder(BiTree T){
+	if(T!=NULL){
+		visit(T);
+		PreOrder(T->lchild);
+		PreOrder(T->rchild);
+	}
+}
+void InOrder(BiTree T){
+	if(T!=NULL){
+		InOrder(T->lchild);
+		visit(T);
+		InOrder(T->rchild);
+	}
+}
+void PostOrder(BiTree T){
+	if(T!=NULL){
+		PostOrder(T->lchild);
+		PostOrder(T->rchild);
+		visit(T);
+	}
+}
+int treedepth(BiTree T){
+	if(T==NULL){
+		return 0;
+	}
+	else{
+		int l=treedepth(T->lchild);
+		int r=treedepth(T->rchild);
+		if(l>=r)
+			return l+1;
+		if(l<r)
+			return r+1;
+		
+}
+typedef struct LinkNode{
+	int data;
+	struct LinkNode * next;
+}LinkNode:
+typedef struct{
+	LinkNode * rear,* front;
+}LinkQueue;
+void LevelOrder(BiTree T){
+	LinkQueue Q;
+	InitQueue(Q);
+	BiTree p;
+	EnQueue(Q,T);
+	while(!ifEmpty(Q)){
+		DeQueue(Q,p);
+		visit(p);
+		if(p->lchild!=NULL)
+			EnQueue(Q,p->lchild);
+		if(p->rchild!=NULL)
+			EnQueue(Q,p->rchild);
+	}
+}
+int main()
+{
+	TreeNode T[MaxSize];
+	for(int i=0;i<MaxSize;i++)
+		T[i].ifEmpty=true;
+   
+   
+   return 0;
+}

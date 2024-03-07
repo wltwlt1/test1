@@ -1,0 +1,39 @@
+#include <stdio.h>
+void Union(int S[],int root1,int root2){
+	if(root1!=root2)
+		S[root2]=root1;
+}
+void UNion(int S[],int Root1,int Root2){
+	if(Root1!=Root2){
+		if(S[Root1]<S[Root2]){
+			S[Root1]=S[Root2]+S[Root1];
+			S[Root2]=Root1;
+		}
+		if(S[Root1]>S[Root2]){
+			S[Root2]=S[Root2]+S[Root1];
+			S[Root1]=Root2;
+		}
+	}
+}
+void Find(int S[],int x){
+	int t[SIZE];
+	int i=0;
+	while(S[x]>=0){
+		
+		t[i]=x;
+		x=S[x];
+		i++;
+	}
+	while(i>=0){
+		S[t[i]]=x;
+		i--;
+	}
+	
+}
+int main()
+{
+   /*  Write C code in this online editor and run it. */
+   printf("Hello, World! \n");
+   
+   return 0;
+}

@@ -1,0 +1,82 @@
+#include <iostream>
+using namespace std;
+BSTNode *BST_Search(BiTree T,ElemType key){
+	while(T!=NULL && key!=T->data){
+		if(key<T->data)
+			T=T->lchild;
+		else
+			T=T->rchild;
+		
+	}
+	return T;
+}
+int BST_Insert(BiTree &T,KeyType k){
+	if(T==NULL){
+		T=(BiTree)malloc(sizeof(BSTNode);
+		T->data=k;
+		T->lchild=T->rchild=NULL;
+	}
+	if(k<T->data)
+		return BST_Insert(T->lchild);
+	if(k>T->data)
+		return BST_Insert(T->rchild);
+}
+void Creat_BST(BiTree &T,KeyType str[], int n){
+	T=NULL;
+	int i=0;
+	while(i<n){
+		BST_Insert(T,str[i]);
+		i++;
+	}
+}
+typedef struct{
+	int *elem;
+	int TableLen;
+}SSTable;
+int Search_Seq(SSTable ST ,int key){
+	ST.elem[0]=key;
+	for(int i=ST.TableLen-1;i>=0;i--){
+		if(ST.elem[i]==key)
+			return i;
+	}
+}
+int Binary_Search(SSTable L,int key){
+	int low=0;
+	int high=L.TableLen-1;
+	int mid;
+	while(low<high){
+		mid=(low+high)/2;
+		if(key==L.elem[mid])
+			return mid;
+		if(key>L.elem[mid])
+			low=mid+1;
+		if(key<L.elem[mid])
+			high=mid-1;
+	}
+	return -1;
+bool TopologicalSort(Graph G){
+	InitStqack(S);
+	for(int i=0;i<G.vexnum;i++){
+		if(indegree[i]==0)
+			Push(S,i);
+	}
+	counter==0;
+	while(isEmpty(S)){
+		Pop(S,t);
+		print[counter++]=t;
+		for(p=Graph.vertices[t].firstarc;p;p->p.nextarc){
+			v=p->adjvex;
+			if(!(--indegree[v]))
+				Push(S,v);
+		}
+	}
+	if(counter<G.vexnum)
+		return false;
+	else
+		return true;
+}
+int main()
+{
+   
+   return 0;
+}
